@@ -3,18 +3,18 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class ImageDownloader : MonoBehaviour
+public class ImageDownloader 
 {
-    [SerializeField] private RawImage _imageRenderer;
-
-    private string _totalUrl;
+    private readonly RawImage _imageRenderer;
+    private readonly string _totalUrl;
     
-    public void Init(string totalUrl)
+    public ImageDownloader(RawImage imageRenderer, string totalUrl)
     {
+        _imageRenderer = imageRenderer;
         _totalUrl = totalUrl;
     }
-    
-    public async Task DownloadImageJob()
+
+    public async Task DownloadImage()
     {
         if (_imageRenderer.texture != null)
         {

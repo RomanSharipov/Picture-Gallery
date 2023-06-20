@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ba3837160ce60409b0ec3098a6eb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _imageDownloaderTemplate: {fileID: -9008408704735109981, guid: 7d65cdbdc48d42543a2e4cb51c02867e, type: 3}
+  _imageDownloaderTemplate: {fileID: 1748382959057493132, guid: 7d65cdbdc48d42543a2e4cb51c02867e, type: 3}
   _containerImages: {fileID: 884950959}
   _countImages: 66
   _allImages: []

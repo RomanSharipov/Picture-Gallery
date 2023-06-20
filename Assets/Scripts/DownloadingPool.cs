@@ -8,12 +8,12 @@ public class DownloadingPool : MonoBehaviour
 {
     [SerializeField] private int _startCountImage = 4;
 
-    private Queue<ImageDownloader> _waitingToBeLoadedImages = new Queue<ImageDownloader>();
-    private List<ImageDownloader> _allTemplatesImages;
+    private Queue<TemplateImage> _waitingToBeLoadedImages = new Queue<TemplateImage>();
+    private List<TemplateImage> _allTemplatesImages;
     private int _indexImage;
     private ScrollingHandler _scrollingHandler;
     
-    public void Init(List<ImageDownloader> allTemplatesImages, ScrollingHandler scrollingHandler)
+    public void Init(List<TemplateImage> allTemplatesImages, ScrollingHandler scrollingHandler)
     {
         _allTemplatesImages = allTemplatesImages;
         _scrollingHandler = scrollingHandler;
@@ -40,8 +40,8 @@ public class DownloadingPool : MonoBehaviour
     {
         while (_waitingToBeLoadedImages.Count > 0)
         {
-            ImageDownloader downloader = _waitingToBeLoadedImages.Dequeue();
-            await downloader.DownloadImageJob();
+            TemplateImage downloader = _waitingToBeLoadedImages.Dequeue();
+            await downloader.DownloadImage();
         }
     }
 

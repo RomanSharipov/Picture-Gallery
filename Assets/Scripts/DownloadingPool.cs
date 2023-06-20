@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DownloadingPool : MonoBehaviour
@@ -31,15 +32,16 @@ public class DownloadingPool : MonoBehaviour
 
         _waitingToBeLoadedImages.Enqueue(_allTemplatesImages[_indexImage]);
 
-        StartCoroutine(StartDownloadImages());
+        StartDownloadImages();
         _indexImage++;
     }
 
-    private IEnumerator StartDownloadImages()
+    private async Task StartDownloadImages()
     {
-        for (int i = 0; i < _waitingToBeLoadedImages.Count; i++)
+        while (_waitingToBeLoadedImages.Count > 0)
         {
-            yield return _waitingToBeLoadedImages.Dequeue().DownloadImageJob();
+            ImageDownloader downloader = _waitingToBeLoadedImages.Dequeue();
+            await downloader.DownloadImageJob();
         }
     }
 

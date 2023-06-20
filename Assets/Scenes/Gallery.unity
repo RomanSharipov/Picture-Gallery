@@ -454,7 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca2dd570cef63c438b801e6e2d1a075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allTemplatesImages: []
   _startCountImage: 4
 --- !u!114 &1150926733
 MonoBehaviour:

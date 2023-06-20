@@ -1,19 +1,17 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
+using System.Threading.Tasks;
 
-public class DownloadingPool : MonoBehaviour
+public class DownloadingPool 
 {
-    [SerializeField] private int _startCountImage = 4;
-
-    private Queue<TemplateImage> _waitingToBeLoadedImages = new Queue<TemplateImage>();
-    private List<TemplateImage> _allTemplatesImages;
+    private readonly List<TemplateImage> _allTemplatesImages;
+    private readonly ScrollingHandler _scrollingHandler;
+    private readonly int _startCountImage = 4;
+    private readonly Queue<TemplateImage> _waitingToBeLoadedImages = new Queue<TemplateImage>();
     private int _indexImage;
-    private ScrollingHandler _scrollingHandler;
     
-    public void Init(List<TemplateImage> allTemplatesImages, ScrollingHandler scrollingHandler)
+    public DownloadingPool(List<TemplateImage> allTemplatesImages, ScrollingHandler scrollingHandler)
     {
         _allTemplatesImages = allTemplatesImages;
         _scrollingHandler = scrollingHandler;
@@ -44,8 +42,8 @@ public class DownloadingPool : MonoBehaviour
             await downloader.DownloadImage();
         }
     }
-
-    private void OnDisable()
+    
+    public void OnDisable()
     {
         _scrollingHandler.NeedDownloadImage -= PutInDownloadNextImage;
     }

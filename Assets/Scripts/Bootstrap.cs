@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Bootstrap : MonoBehaviour
 {
-    [SerializeField] private ScrollRect _scrollRect ;
+    [SerializeField] private ScrollRect _scrollRect;
     [SerializeField] private SpawnerTemplates _spawnerTemplates;
     [SerializeField] private DownloadingPool _downloadingPool;
     [SerializeField] private ScrollingHandler _scrollingHandler;

@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class ImageDownloader : MonoBehaviour
 {
-    public RawImage imageRenderer;
-    public Sprite _sample;
-    public string totalUrl;
-    public int compressionQuality = 1;
+    [SerializeField] private RawImage _imageRenderer;
+
+    private string _totalUrl;
     
+    public void Init(string totalUrl)
+    {
+        _totalUrl = totalUrl;
+    }
+
     public IEnumerator DownloadImageJob()
     {
-        if (imageRenderer.texture != null)
+        if (_imageRenderer.texture != null)
         {
             Debug.Log("imageRenderer.texture != null");
             yield break;
         }
 
-        using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(totalUrl))
+        using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(_totalUrl))
         {
             yield return www.SendWebRequest();
 
@@ -28,7 +32,7 @@ public class ImageDownloader : MonoBehaviour
                 yield break;
             }
             Texture2D texture = DownloadHandlerTexture.GetContent(www);
-            imageRenderer.texture = texture;
+            _imageRenderer.texture = texture;
         }
     }
 }

@@ -5,23 +5,31 @@ using UnityEngine;
 
 public class DownloadingPool : MonoBehaviour
 {
-    [SerializeField] private Queue<ImageDownloader> _waitingToBeLoadedImages = new Queue<ImageDownloader>();
+    [SerializeField] private int _startCountImage = 4;
 
-    [SerializeField] private List<ImageDownloader> _allImages;
-
-    int _indexImage;
+    private Queue<ImageDownloader> _waitingToBeLoadedImages = new Queue<ImageDownloader>();
+    private List<ImageDownloader> _allTemplatesImages;
+    private int _indexImage;
+    private ScrollingHandler _scrollingHandler;
     
-    public void Init(List<ImageDownloader> allImages)
+    public void Init(List<ImageDownloader> allTemplatesImages, ScrollingHandler scrollingHandler)
     {
-        _allImages = allImages;
+        _allTemplatesImages = allTemplatesImages;
+        _scrollingHandler = scrollingHandler;
+        _scrollingHandler.NeedDownloadImage += PutInDownloadNextImage;
+
+        for (int i = 0; i < _startCountImage; i++)
+        {
+            PutInDownloadNextImage();
+        }
     }
 
-    public void AddToQueue()
+    private void PutInDownloadNextImage()
     {
-        if (_indexImage >= _allImages.Count)
+        if (_indexImage >= _allTemplatesImages.Count)
             return;
 
-        _waitingToBeLoadedImages.Enqueue(_allImages[_indexImage]);
+        _waitingToBeLoadedImages.Enqueue(_allTemplatesImages[_indexImage]);
 
         StartCoroutine(StartDownloadImages());
         _indexImage++;
@@ -35,12 +43,8 @@ public class DownloadingPool : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.D))
-    //    {
-    //        AddToQueue(_allImages[index]);
-    //        index++;
-    //    }
-    //}
+    private void OnDisable()
+    {
+        _scrollingHandler.NeedDownloadImage -= PutInDownloadNextImage;
+    }
 }

@@ -59,8 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49929e61902f58e43ad4fc6285a1b36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageRenderer: {fileID: 1541956044008189152}
-  _sample: {fileID: 21300000, guid: f82dfc5fc3c5a8f4080a3550427019c8, type: 3}
+  _imageRenderer: {fileID: 1541956044008189152}
 --- !u!114 &1541956044008189152
 MonoBehaviour:
   m_ObjectHideFlags: 0

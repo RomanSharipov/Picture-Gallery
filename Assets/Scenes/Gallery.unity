@@ -328,6 +328,8 @@ GameObject:
   - component: {fileID: 1150926728}
   - component: {fileID: 1150926731}
   - component: {fileID: 1150926732}
+  - component: {fileID: 1150926733}
+  - component: {fileID: 1150926734}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -436,16 +438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c85fbc923c933a4c9d712e626dd2a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _imageDownloader: {fileID: -9008408704735109981, guid: 7d65cdbdc48d42543a2e4cb51c02867e, type: 3}
-  _containerImages: {fileID: 884950959}
-  _mask: {fileID: 1941167038}
-  _countImages: 66
-  _urlPage: http://data.ikppbb.com/test-task-unity-data/pics/
-  _fileExtension: .jpg
   _scrollRect: {fileID: 1150926728}
-  _allImages: []
-  _visibleUIObjectsGetter: {fileID: 1941167042}
+  _spawnerTemplates: {fileID: 1150926733}
   _downloadingPool: {fileID: 1150926732}
+  _scrollingHandler: {fileID: 1150926734}
 --- !u!114 &1150926732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,7 +454,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca2dd570cef63c438b801e6e2d1a075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _allTemplatesImages: []
+  _startCountImage: 4
+--- !u!114 &1150926733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150926726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ba3837160ce60409b0ec3098a6eb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageDownloaderTemplate: {fileID: -9008408704735109981, guid: 7d65cdbdc48d42543a2e4cb51c02867e, type: 3}
+  _containerImages: {fileID: 884950959}
+  _countImages: 66
   _allImages: []
+--- !u!114 &1150926734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150926726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b7d24ebad768641913ff9714987832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 1150926728}
 --- !u!1 &1585545271
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +666,6 @@ GameObject:
   - component: {fileID: 1941167041}
   - component: {fileID: 1941167040}
   - component: {fileID: 1941167039}
-  - component: {fileID: 1941167042}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -720,17 +745,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941167037}
   m_CullTransparentMesh: 1
---- !u!114 &1941167042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941167037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9416833b78d2fc74e9a4910d714e99e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rectTransform: {fileID: 1941167038}
-  _containerObjects: {fileID: 884950959}

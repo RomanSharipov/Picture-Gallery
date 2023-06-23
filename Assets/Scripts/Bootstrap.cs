@@ -1,6 +1,6 @@
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Bootstrap : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class Bootstrap : MonoBehaviour
         _spawnerTemplates.CreateTemplates();
         _scrollingHandler.Init(_spawnerTemplates.CountImages);
         _downloadingPool = new DownloadingPool(_spawnerTemplates.AllImages.ToList(), _scrollingHandler);
+        _downloadingPool.DownloadFirstImages();
+        
     }
 
     private void OnDisable()

@@ -16,11 +16,6 @@ public class DownloadingPool
         _allTemplatesImages = allTemplatesImages;
         _scrollingHandler = scrollingHandler;
         _scrollingHandler.NeedDownloadImage += PutInDownloadNextImage;
-
-        for (int i = 0; i < _startCountImage; i++)
-        {
-            PutInDownloadNextImage();
-        }
     }
 
     private void PutInDownloadNextImage()
@@ -34,7 +29,7 @@ public class DownloadingPool
         _indexImage++;
     }
 
-    private async Task StartDownloadImages()
+    private async void StartDownloadImages()
     {
         while (_waitingToBeLoadedImages.Count > 0)
         {
@@ -46,5 +41,13 @@ public class DownloadingPool
     public void OnDisable()
     {
         _scrollingHandler.NeedDownloadImage -= PutInDownloadNextImage;
+    }
+
+    public void DownloadFirstImages()
+    {
+        for (int i = 0; i < _startCountImage; i++)
+        {
+            PutInDownloadNextImage();
+        }
     }
 }

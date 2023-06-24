@@ -285,9 +285,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1103073671}
   - component: {fileID: 1103073674}
-  - component: {fileID: 1103073673}
   - component: {fileID: 1103073672}
   - component: {fileID: 1103073675}
+  - component: {fileID: 1103073676}
   m_Layer: 5
   m_Name: Picture
   m_TagString: Untagged
@@ -342,20 +342,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &1103073673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103073670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 3
-  m_AspectRatio: 1
 --- !u!222 &1103073674
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -377,6 +363,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rawImage: {fileID: 1103073672}
+--- !u!114 &1103073676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103073670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1
 --- !u!1 &1421246517
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,4 +18,16 @@ public class SceneLoader : MonoBehaviour
         _progressView.FillForSeconds(timeFakeLoading);
         SceneManager.LoadScene(name);
     }
+
+    public void LoadPreviousScene()
+    {
+        int indexScene = SceneManager.GetActiveScene().buildIndex - 1;
+        
+        if (indexScene > 0)
+        {
+            SceneManager.LoadScene(indexScene);
+        }
+    }
+
+
 }

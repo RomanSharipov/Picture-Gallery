@@ -10,18 +10,16 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private ProgressView _progressView;
 
     public static SceneLoader Instance;
-    private float _timeBeforeNextScene = 2.0f;
-
+    
     private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene(SceneConstants.Menu);
     }
-    
-    public void LoadScene(string name)
+    public void LoadScene(string name,float timeFakeLoading)
     {
-        _progressView.FillForSeconds(_timeBeforeNextScene);
+        _progressView.FillForSeconds(timeFakeLoading);
         SceneManager.LoadScene(name);
     }
 }

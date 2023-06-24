@@ -2,29 +2,29 @@ using UnityEngine;
 
 public class SpawnerTemplates : MonoBehaviour
 {
-    [SerializeField] private TemplateImage _imageDownloaderTemplate;
-    [SerializeField] private RectTransform _containerImages;
-    [SerializeField] private int _countImages = 66;
-    [SerializeField] private TemplateImage[] _allImages;
+    [SerializeField] private Picture _pictureTemplate;
+    [SerializeField] private RectTransform _containerPictures;
+    [SerializeField] private int _countPictures = 66;
+    [SerializeField] private Picture[] _allPictures;
 
-    public int CountImages => _countImages;
-    public TemplateImage[] AllImages  => _allImages;
+    public int CountImages => _countPictures;
+    public Picture[] AllImages  => _allPictures;
 
     public void CreateTemplates()
     {
-        _allImages = new TemplateImage[_countImages];
+        _allPictures = new Picture[_countPictures];
 
-        for (int i = 0; i < _allImages.Length; i++)
+        for (int i = 0; i < _allPictures.Length; i++)
         {
-            TemplateImage newImage = Instantiate(_imageDownloaderTemplate);
+            Picture newImage = Instantiate(_pictureTemplate);
 
-            newImage.transform.SetParent(_containerImages, false);
+            newImage.transform.SetParent(_containerPictures, false);
             int numberImage = i + 1;
             
             UrlProvider urlProvider = new UrlProvider(numberImage);
             newImage.Init(urlProvider.Url);
             
-            _allImages[i] = newImage;
+            _allPictures[i] = newImage;
         }
     }
 }

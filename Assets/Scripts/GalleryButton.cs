@@ -10,7 +10,7 @@ public class GalleryButton : MonoBehaviour
 
     private void OnGalleryButtonClick()
     {
-        SceneLoader.Instance.LoadScene(SceneConstants.Gallery);
+        SceneLoader.Instance.LoadScene(SceneConstants.Gallery,1.5f);
     }
 
     private void OnEnable()

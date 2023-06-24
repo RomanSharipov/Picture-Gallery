@@ -5,25 +5,25 @@ using System.Threading.Tasks;
 
 public class DownloadingPool 
 {
-    private readonly List<TemplateImage> _allTemplatesImages;
+    private readonly List<Picture> _allTemplatesPictures;
     private readonly ScrollingHandler _scrollingHandler;
     private readonly int _startCountImage = 4;
-    private readonly Queue<TemplateImage> _waitingToBeLoadedImages = new Queue<TemplateImage>();
+    private readonly Queue<Picture> _waitingToBeLoadedPicture = new Queue<Picture>();
     private int _indexImage;
     
-    public DownloadingPool(List<TemplateImage> allTemplatesImages, ScrollingHandler scrollingHandler)
+    public DownloadingPool(List<Picture> allTemplatesImages, ScrollingHandler scrollingHandler)
     {
-        _allTemplatesImages = allTemplatesImages;
+        _allTemplatesPictures = allTemplatesImages;
         _scrollingHandler = scrollingHandler;
         _scrollingHandler.NeedDownloadImage += PutInDownloadNextImage;
     }
 
     private void PutInDownloadNextImage()
     {
-        if (_indexImage >= _allTemplatesImages.Count)
+        if (_indexImage >= _allTemplatesPictures.Count)
             return;
 
-        _waitingToBeLoadedImages.Enqueue(_allTemplatesImages[_indexImage]);
+        _waitingToBeLoadedPicture.Enqueue(_allTemplatesPictures[_indexImage]);
 
         StartDownloadImages();
         _indexImage++;
@@ -31,9 +31,9 @@ public class DownloadingPool
 
     private async void StartDownloadImages()
     {
-        while (_waitingToBeLoadedImages.Count > 0)
+        while (_waitingToBeLoadedPicture.Count > 0)
         {
-            TemplateImage downloader = _waitingToBeLoadedImages.Dequeue();
+            Picture downloader = _waitingToBeLoadedPicture.Dequeue();
             await downloader.DownloadImage();
         }
     }

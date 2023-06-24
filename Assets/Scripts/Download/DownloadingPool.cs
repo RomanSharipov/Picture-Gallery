@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
-using System.Threading.Tasks;
-
 public class DownloadingPool 
 {
     private readonly List<Picture> _allTemplatesPictures;

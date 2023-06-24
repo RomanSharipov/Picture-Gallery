@@ -1,6 +1,3 @@
-using Unity.VisualScripting;
-using UnityEngine;
-
 public class OnClickPictureHandler 
 {
     private Picture _picture;

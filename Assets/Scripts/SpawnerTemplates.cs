@@ -28,7 +28,7 @@ public class SpawnerTemplates : MonoBehaviour
         }
     }
 
-    public void TryGetTexturesFromTextureData()
+    public void TrySetTexturesFromTextureData()
     {
         for (int i = 0; i < _allPictures.Length; i++)
         {

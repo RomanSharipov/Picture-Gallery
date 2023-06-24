@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
@@ -12,7 +11,7 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         _spawnerTemplates.CreateTemplates();
-        _spawnerTemplates.TryGetTexturesFromTextureData();
+        _spawnerTemplates.TrySetTexturesFromTextureData();
         _scrollingHandler.Init(_spawnerTemplates.CountImages);
         _downloadingPool = new DownloadingPool(_spawnerTemplates.AllImages.ToList(), _scrollingHandler);
         _downloadingPool.DownloadFirstImages();

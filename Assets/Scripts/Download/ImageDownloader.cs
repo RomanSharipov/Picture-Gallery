@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
-public class ImageDownloader 
+public class ImageDownloader
 {
     private readonly Picture _picture;
     private readonly string _totalUrl;
-    
+
     public ImageDownloader(Picture picture, string totalUrl)
     {
         _picture = picture;

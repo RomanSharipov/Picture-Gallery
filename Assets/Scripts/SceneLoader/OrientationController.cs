@@ -27,7 +27,6 @@ public class OrientationController : MonoBehaviour
     private void ChangeOrientationToPortrait()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-        Debug.Log("Portrait");
     }
 
 }

@@ -12,6 +12,7 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         _spawnerTemplates.CreateTemplates();
+        _spawnerTemplates.TryGetTexturesFromTextureData();
         _scrollingHandler.Init(_spawnerTemplates.CountImages);
         _downloadingPool = new DownloadingPool(_spawnerTemplates.AllImages.ToList(), _scrollingHandler);
         _downloadingPool.DownloadFirstImages();

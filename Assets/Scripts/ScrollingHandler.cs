@@ -9,7 +9,7 @@ public class ScrollingHandler : MonoBehaviour
     private int _currentIndexImage;
     private int _countImages;
 
-    public event Action NeedDownloadImage;
+    public event Action NeedImage;
 
     public void Init(int countImages)
     {
@@ -32,6 +32,6 @@ public class ScrollingHandler : MonoBehaviour
             return;
 
         _currentIndexImage = vector2.y.NormalizeValue(_countImages);
-        NeedDownloadImage?.Invoke();
+        NeedImage?.Invoke();
     }
 }

@@ -9,6 +9,6 @@ public class FullScreenImageInitializer : MonoBehaviour
 
     private void OnEnable()
     {
-        _rawImage.texture = TextureData.texture;
+        _rawImage.texture = TextureData.Instance.current—lickedPicture.Texture;
     }
 }

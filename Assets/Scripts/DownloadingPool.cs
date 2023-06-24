@@ -15,14 +15,14 @@ public class DownloadingPool
     {
         _allTemplatesPictures = allTemplatesImages;
         _scrollingHandler = scrollingHandler;
-        _scrollingHandler.NeedDownloadImage += PutInDownloadNextImage;
+        _scrollingHandler.NeedImage += PutInDownloadNextImage;
     }
 
     private void PutInDownloadNextImage()
     {
         if (_indexImage >= _allTemplatesPictures.Count)
             return;
-
+        
         _waitingToBeLoadedPicture.Enqueue(_allTemplatesPictures[_indexImage]);
 
         StartDownloadImages();
@@ -35,16 +35,18 @@ public class DownloadingPool
         {
             Picture downloader = _waitingToBeLoadedPicture.Dequeue();
             await downloader.DownloadImage();
+            
         }
     }
     
     public void OnDisable()
     {
-        _scrollingHandler.NeedDownloadImage -= PutInDownloadNextImage;
+        _scrollingHandler.NeedImage -= PutInDownloadNextImage;
     }
 
     public void DownloadFirstImages()
     {
+        
         for (int i = 0; i < _startCountImage; i++)
         {
             PutInDownloadNextImage();

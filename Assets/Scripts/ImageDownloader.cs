@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class ImageDownloader 
 {
-    private readonly RawImage _imageRenderer;
+    private readonly Picture _picture;
     private readonly string _totalUrl;
     
-    public ImageDownloader(RawImage imageRenderer, string totalUrl)
+    public ImageDownloader(Picture picture, string totalUrl)
     {
-        _imageRenderer = imageRenderer;
+        _picture = picture;
         _totalUrl = totalUrl;
     }
 
     public async Task DownloadImage()
     {
-        if (_imageRenderer.texture != null)
+        if (_picture.Texture != null)
         {
             Debug.Log("imageRenderer.texture != null");
             return;
@@ -37,7 +37,8 @@ public class ImageDownloader
                 }
 
                 Texture2D texture = DownloadHandlerTexture.GetContent(www);
-                _imageRenderer.texture = texture;
+                _picture.SetTexture(texture);
+                TextureData.Instance.AddTexture(texture, _picture.Index);
                 completionSource.SetResult(true);
             };
 

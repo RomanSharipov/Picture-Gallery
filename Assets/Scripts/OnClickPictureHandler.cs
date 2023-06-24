@@ -11,9 +11,9 @@ public class OnClickPictureHandler
         _picture.Clicked += OnClick;
     }
 
-    private void OnClick(Texture texture)
+    private void OnClick(Picture picture)
     {
-        TextureData.texture = texture;
+        TextureData.Instance.current—lickedPicture = picture;
         SceneLoader.Instance.LoadScene(SceneConstants.FullScreenView, 0.5f);
     }
 

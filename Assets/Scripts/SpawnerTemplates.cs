@@ -22,9 +22,17 @@ public class SpawnerTemplates : MonoBehaviour
             int numberImage = i + 1;
             
             UrlProvider urlProvider = new UrlProvider(numberImage);
-            newImage.Init(urlProvider.Url);
+            newImage.Init(urlProvider.Url, i);
             
             _allPictures[i] = newImage;
+        }
+    }
+
+    public void TryGetTexturesFromTextureData()
+    {
+        for (int i = 0; i < _allPictures.Length; i++)
+        {
+            _allPictures[i].SetTexture(TextureData.Instance.GetTexture(i));
         }
     }
 }

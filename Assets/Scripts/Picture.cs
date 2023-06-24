@@ -11,11 +11,18 @@ public class Picture : MonoBehaviour,IPointerClickHandler
     private ImageDownloader _imageDownloader;
     private OnClickPictureHandler _onClickPictureHandler;
 
-    public event Action<Texture> Clicked;
+    private int _index;
 
-    public void Init(string url)
+    public int Index => _index;
+
+    public Texture Texture => _rawImage.texture;
+
+    public event Action<Picture> Clicked;
+
+    public void Init(string url,int index)
     {
-        _imageDownloader = new ImageDownloader(_rawImage, url);
+        _index = index;
+        _imageDownloader = new ImageDownloader(this, url);
         _onClickPictureHandler = new OnClickPictureHandler(this);
     }
 
@@ -29,7 +36,7 @@ public class Picture : MonoBehaviour,IPointerClickHandler
         if (_rawImage.texture == null)
             return;
 
-        Clicked?.Invoke(_rawImage.texture);
+        Clicked?.Invoke(this);
     }
 
     private void OnDisable()
@@ -37,4 +44,8 @@ public class Picture : MonoBehaviour,IPointerClickHandler
         _onClickPictureHandler.OnDisable();
     }
 
+    public void SetTexture(Texture texture)
+    {
+        _rawImage.texture = texture;
+    }
 }
